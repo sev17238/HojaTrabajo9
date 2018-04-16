@@ -3,7 +3,8 @@
 
 /**
  * Clase que muestra la iplementacion de un SplayTree con uso de la clase Association.
- * @author SDiego
+ * @author David Soto 17551
+ * @author Diego Sevilla 17238
  * @param <Key>
  * @param <Value>
  */

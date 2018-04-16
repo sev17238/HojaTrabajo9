@@ -1,7 +1,8 @@
 
 /**
  *
- * @author SDiego
+ * @author David Soto 17551
+ * @author Diego Sevilla 17238
  * @param <Key>
  * @param <Value>
  */

@@ -35,7 +35,7 @@ public class HT9 {
                         SPTree = (SplayTree)fac.getImp("SplayTree"); 
                         break;
                     case "2":                         
-                        //RBTree = (RedBlackBST)fac.getImp("RedBlackTree");                    
+                        RBTree = (RedBlackBST)fac.getImp("RedBlackTree");                    
                         break;                     
                 } 
         
@@ -55,7 +55,7 @@ public class HT9 {
                     sb.append(line);
                     sb.append(System.lineSeparator()); 
                     line = line + " "; //Concatenado para que el ultimo valor sea leido sin problemas
-                                       //por substring
+                                       //por substring      
                     for(int i=1;i<line.length();i++){
                         String iter = line.substring((i-1), i); //iterador que toma el valor de cada letra de la linea
                         if(iter.equals("\t")){
@@ -74,7 +74,7 @@ public class HT9 {
                             if(entry.equals("1")){
                                 SPTree.put(ingles, espanol);
                             }else{
-                                //RBTree.put(ingles,espanol);
+                                RBTree.put(ingles,espanol);
                             }  
                         }                        
                     }
@@ -112,7 +112,7 @@ public class HT9 {
                             if(entry.equals("1")){
                                 prueba = SPTree.get(palabra);
                             }else{
-                                //prueba = RBTree.get(palabra);
+                                prueba = RBTree.get(palabra);
                             }                             
                             if(prueba == null){
                                 prueba = "*" + palabra + "*";

@@ -5,9 +5,10 @@ import java.util.NoSuchElementException;
 import java.util.Queue;
 /**
  * Clase que muestra la implementacion de un reb-black bynary search tree con la utilizacion de la clase Association.
- * @author SDiego
+ * @author David Soto 17551
+ * @author Diego Sevilla 17238
  */
-public class RedBlackBST<Key extends Comparable<Key>, Value> {
+public class RedBlackBST<Key extends Comparable<Key>, Value extends Comparable<Value>>{
     private static final boolean RED   = true;
     private static final boolean BLACK = false;
 

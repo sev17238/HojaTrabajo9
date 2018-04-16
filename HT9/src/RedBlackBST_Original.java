@@ -2,10 +2,9 @@
  * https://algs4.cs.princeton.edu/33balanced/RedBlackBST.java.html
  */
 import java.util.NoSuchElementException;
-import java.util.Queue;
 /**
- *
- * @author SDiego
+ * @author David Soto 17551
+ * @author Diego Sevilla 17238
  */
 public class RedBlackBST_Original<Key extends Comparable<Key>, Value> {
 
@@ -504,50 +503,6 @@ public class RedBlackBST_Original<Key extends Comparable<Key>, Value> {
    /***************************************************************************
     *  Range count and range search.
     ***************************************************************************/
-
-    /**
-     * Returns all keys in the symbol table as an {@code Iterable}.
-     * To iterate over all of the keys in the symbol table named {@code st},
-     * use the foreach notation: {@code for (Key key : st.keys())}.
-     * @return all keys in the symbol table as an {@code Iterable}
-     */
-    public Iterable<Key> keys() {
-        if (isEmpty()) return new Queue<Key>();
-        return keys(min(), max());
-    }
-
-    /**
-     * Returns all keys in the symbol table in the given range,
-     * as an {@code Iterable}.
-     *
-     * @param  lo minimum endpoint
-     * @param  hi maximum endpoint
-     * @return all keys in the sybol table between {@code lo} 
-     *    (inclusive) and {@code hi} (inclusive) as an {@code Iterable}
-     * @throws IllegalArgumentException if either {@code lo} or {@code hi}
-     *    is {@code null}
-     */
-    public Iterable<Key> keys(Key lo, Key hi) {
-        if (lo == null) throw new IllegalArgumentException("first argument to keys() is null");
-        if (hi == null) throw new IllegalArgumentException("second argument to keys() is null");
-
-        Queue<Key> queue = new Queue<Key>();
-        // if (isEmpty() || lo.compareTo(hi) > 0) return queue;
-        keys(root, queue, lo, hi);
-        return queue;
-    } 
-
-    // add the keys between lo and hi in the subtree rooted at x
-    // to the queue
-    private void keys(Node x, Queue<Key> queue, Key lo, Key hi) { 
-        if (x == null) return; 
-        int cmplo = lo.compareTo(x.key); 
-        int cmphi = hi.compareTo(x.key); 
-        if (cmplo < 0) keys(x.left, queue, lo, hi); 
-        if (cmplo <= 0 && cmphi >= 0) queue.enqueue(x.key); 
-        if (cmphi > 0) keys(x.right, queue, lo, hi); 
-    } 
-
     /**
      * Returns the number of keys in the symbol table in the given range.
      *
@@ -571,15 +526,6 @@ public class RedBlackBST_Original<Key extends Comparable<Key>, Value> {
    /***************************************************************************
     *  Check integrity of red-black tree data structure.
     ***************************************************************************/
-    private boolean check() {
-        if (!isBST())            StdOut.println("Not in symmetric order");
-        if (!isSizeConsistent()) StdOut.println("Subtree counts not consistent");
-        if (!isRankConsistent()) StdOut.println("Ranks not consistent");
-        if (!is23())             StdOut.println("Not a 2-3 tree");
-        if (!isBalanced())       StdOut.println("Not balanced");
-        return isBST() && isSizeConsistent() && isRankConsistent() && is23() && isBalanced();
-    }
-
     // does this binary tree satisfy symmetric order?
     // Note: this test also ensures that data structure is a binary tree since order is strict
     private boolean isBST() {
@@ -603,15 +549,6 @@ public class RedBlackBST_Original<Key extends Comparable<Key>, Value> {
         if (x.size != size(x.left) + size(x.right) + 1) return false;
         return isSizeConsistent(x.left) && isSizeConsistent(x.right);
     } 
-
-    // check that ranks are consistent
-    private boolean isRankConsistent() {
-        for (int i = 0; i < size(); i++)
-            if (i != rank(select(i))) return false;
-        for (Key key : keys())
-            if (key.compareTo(select(rank(key))) != 0) return false;
-        return true;
-    }
 
     // Does the tree have no red right links, and at most one (left)
     // red links in a row on any path?
