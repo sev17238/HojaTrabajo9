@@ -3,8 +3,8 @@
  *
  * @author David Soto 17551
  * @author Diego Sevilla 17238
- * @param <Key>
- * @param <Value>
+ * @param <Key> La llave
+ * @param <Value> El valor
  */
 public class SplayTree_Original<Key extends Comparable<Key>, Value>  {
 
@@ -38,6 +38,11 @@ public class SplayTree_Original<Key extends Comparable<Key>, Value>  {
    /***************************************************************************
     *  Splay tree insertion.
     ***************************************************************************/
+    /**
+     * 
+     * @param key Llave
+     * @param value Valor
+     */
     public void put(Key key, Value value) {
         // splay key to root
         if (root == null) {
@@ -84,6 +89,10 @@ public class SplayTree_Original<Key extends Comparable<Key>, Value>  {
      * is moved to the root position by splaying for the deletion key in A's 
      * right subtree. Finally, A's right child is made the new root's right 
      * child.
+     */
+    /**
+     * 
+     * @param key Llave
      */
     public void remove(Key key) {
         if (root == null) return; // empty tree
@@ -169,6 +178,10 @@ public class SplayTree_Original<Key extends Comparable<Key>, Value>  {
     ***************************************************************************/
 
     // height of tree (1-node tree has height 0)
+    /**
+     * 
+     * @return height of tree 
+     */
     public int height() { return height(root); }
     private int height(Node x) {
         if (x == null) return -1;
