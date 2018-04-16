@@ -85,7 +85,7 @@ public class HT9 {
                 decision = teclado.nextInt();               
                 while(decision != 2){
                     if(decision == 1){
-                        String traduccion = "";
+                        //String traduccion = "";
                         String oracion = "";
                         System.out.println("Ingrese el nombre del archivo a traducir(Ej. texto.txt): ");
                         String texto = teclado2.nextLine();
@@ -105,7 +105,7 @@ public class HT9 {
                         br1.close();
         
                         String palabras[] = palabra.split(" ");
-                        for(int i = 0; i < palabras.length;i++){
+                        /*for(int i = 0; i < palabras.length;i++){
                             palabra = palabras[i];
                             palabra = palabra.toUpperCase();
                             String prueba = "";
@@ -118,8 +118,9 @@ public class HT9 {
                                 prueba = "*" + palabra + "*";
                             }
                             traduccion = traduccion + " " + prueba + " ";
-                        }
-                        System.out.println(traduccion);
+                        } */   
+                        //System.out.println(traduccion);
+                        System.out.println(Traduccion(palabras,palabra,SPTree,RBTree,entry));
                     }else{
                         System.out.println("No ha ingresado una opcion valida");
                     }    
@@ -130,9 +131,35 @@ public class HT9 {
             }
             finally{
                 br.close();
-            }  
-        
-        
+            }          
     }
+    /**
+     * Metodo para chequear el tiempo que toma una traduccion de un texto con alguna de las dos implementaciones.
+     * @param palabras cadena de caracteres
+     * @param palabra un string 
+     * @param SPTree el objeto de SplayTree en cuestion
+     * @param RBTree el objeto de RedBlaskBST en cuestion
+     * @param entry la entrada para elegir entre una implementacion y la otra
+     * @return 
+     */
+    private static String Traduccion(String palabras[],String palabra,SplayTree SPTree,RedBlackBST RBTree, String entry){
+        String traduccion = "";
+        for(int i = 0; i < palabras.length;i++){
+            palabra = palabras[i];
+            palabra = palabra.toUpperCase();
+            String prueba = "";
+            if(entry.equals("1")){
+                prueba = (String)SPTree.get(palabra);
+            }else{
+                prueba = (String)RBTree.get(palabra);
+            }                             
+            if(prueba == null){
+                prueba = "*" + palabra + "*";
+            }
+                traduccion = traduccion + " " + prueba + " ";
+        }
+        return traduccion;
+    }
+    
     
 }
